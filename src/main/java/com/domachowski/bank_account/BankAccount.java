@@ -8,7 +8,7 @@ import java.util.List;
 public class BankAccount implements BankAccountService{
 
     private int balance;
-    private List<BankAccountOperation> operations = new ArrayList<>();
+    private final List<BankAccountOperation> operations = new ArrayList<>();
 
     public BankAccount() {
     }
@@ -31,12 +31,12 @@ public class BankAccount implements BankAccountService{
 
     @Override
     public void operationHistory() {
-        System.out.println("TYPE     | DATE       | AMOUNT  | BALANCE");
+        System.out.printf("  %-10s | %-12s | %10s | %10s  %n", "TYPE", "DATE", "AMOUNT", "BALANCE");
         int balance = 0;
 
         for (BankAccountOperation operation : operations) {
             balance += operation.getAmount();
-            System.out.println(operation.getType() + " | " + operation.getDate() + " | " + operation.getAmount() + " | " + balance);
+            System.out.printf("  %-10s | %-12s | %10s | %10s  %n", operation.getType(), operation.getDate(), operation.getAmount(), balance);
 
         }
     }
